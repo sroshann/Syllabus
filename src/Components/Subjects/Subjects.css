@@ -1,0 +1,38 @@
+.Subjects {
+
+    width: 40%;
+    height: fit-content;
+    background-color: #ff605c;
+    position: absolute;
+    border-radius: 6px;
+    /* box-shadow: 6.22302px 6.22302px 18.66907px 0px #ff605c, -6.22302px -6.22302px 18.66907px 0px #ff605c; */
+
+}
+
+.exit {
+
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: x-large;
+    font-weight: 900;
+
+}
+
+.contents { margin-top: 32px; }
+
+.subs {
+
+    width: 87.5%;
+    padding: 15px 25px;
+    background: white;
+    border-radius: 6px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 1.3%;
+
+}
