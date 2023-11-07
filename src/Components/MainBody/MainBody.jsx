@@ -1,12 +1,11 @@
 import Subjects from '../Subjects/Subjects';
 import './MainBody.css';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function MainBody() {
 
     const [general, setGeneral] = useState([])
     const [toggle_general, setToggleGeneral] = useState(false)
-    const [selectedSemester, setSelectedSemester] = useState( null );
 
     const [automobile, setAutomobile] = useState([])
     const [toggle_automobile, setToggleAutomobile] = useState(false)
@@ -25,6 +24,31 @@ function MainBody() {
 
     const [mechanical, setMechanical] = useState([])
     const [toggle_mechanical, setToggleMechanical] = useState(false)
+
+    const [selectedSemester, setSelectedSemester] = useState( null );
+
+    const [ small , changeSmall ] = useState( false )
+
+    useEffect(() => {
+
+        windowWidth()
+        window.addEventListener('resize',windowWidth)
+
+        return () => {
+
+            window.removeEventListener('resize',windowWidth)
+
+        }
+
+    } , [])
+
+    const windowWidth = () => {
+
+        const width = window.innerWidth;
+        if (width <= 767) changeSmall(true);
+        else changeSmall(false);
+
+    };
 
     const Department = (department) => {
 
@@ -91,9 +115,9 @@ function MainBody() {
 
         <div className='main-body' >
 
-            <div id="listing-departments">
+            <div id={ small ? 'small-listing-departments' : 'listing-departments' }>
 
-                <div className='departments' onClick={() => { Department('general') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('general') }} >
 
                     <p>General</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -104,7 +128,7 @@ function MainBody() {
 
                     toggle_general && general.map((general_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('General',index)} >
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('General',index)} >
 
                             <p>{general_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -115,7 +139,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('automobile') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('automobile') }} >
 
                     <p>Automobile Engineering</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -126,7 +150,7 @@ function MainBody() {
 
                     toggle_automobile && automobile.map((automobile_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('Automobile',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('Automobile',index)}>
 
                             <p>{automobile_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -137,7 +161,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('civil') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('civil') }} >
 
                     <p>Civil Engineering</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -148,7 +172,7 @@ function MainBody() {
 
                     toggle_civil && civil.map((civil_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('Civil',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('Civil',index)}>
 
                             <p>{civil_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -159,7 +183,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('computer') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('computer') }} >
 
                     <p>Computer Engineering</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -170,7 +194,7 @@ function MainBody() {
 
                     toggle_computer && computer.map((computer_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('Computer',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('Computer',index)}>
                             
                             <p>{computer_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -181,7 +205,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('electronics') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('electronics') }} >
 
                     <p>Electronics Engineering</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -192,7 +216,7 @@ function MainBody() {
 
                     toggle_electronics && electronics.map((electronics_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('Electronics',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('Electronics',index)}>
                             
                             <p>{electronics_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -203,7 +227,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('eee') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('eee') }} >
 
                     <p>Electrical & Electronics Engineering</p>
                     <i class='bx bx-chevron-down drop-down'></i>
@@ -214,7 +238,7 @@ function MainBody() {
 
                     toggle_eee && eee.map((eee_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('EEE',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('EEE',index)}>
                             
                             <p>{eee_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -225,7 +249,7 @@ function MainBody() {
 
                 }
 
-                <div className='departments' onClick={() => { Department('mechanical') }} >
+                <div className={ small ? 'small-departments' : 'departments' } onClick={() => { Department('mechanical') }} >
 
                     <p>Mechanical Engineering</p>
                     <i class='bx bx-chevron-down' drop-down></i>
@@ -236,7 +260,7 @@ function MainBody() {
 
                     toggle_mechanical && mechanical.map((mechanical_obj,index) =>
 
-                        <div className="semester" onClick={() => handleSemesterClick('Mechanical',index)}>
+                        <div className={ small ? "small-semester" : "semester" } onClick={() => handleSemesterClick('Mechanical',index)}>
                             
                             <p>{mechanical_obj}</p>
                             <i class='bx bx-chevron-right drop-down'></i>
@@ -251,7 +275,7 @@ function MainBody() {
 
             {
 
-                selectedSemester && <Subjects department={selectedSemester[0]} index={selectedSemester[1]} returnTo={returnTo} />
+                selectedSemester && <Subjects department={selectedSemester[0]} index={selectedSemester[1]} returnTo={returnTo} small={ small } />
 
             }
 

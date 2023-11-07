@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import './Subjects.css'
 
-function Subjects({ department, index, returnTo }) {
+function Subjects({ department, index, returnTo , small }) {
 
   const [subjects, setSubjects] = useState([])
   const [ link , setLink ] = useState([])
+
+  console.log(small);
 
   useEffect(() => {
 
@@ -268,9 +270,9 @@ function Subjects({ department, index, returnTo }) {
 
   return (
 
-    <div className='Subjects'>
+    <div className={ small ? 'small-subjects' : 'subjects' }>
 
-      <i class='bx bx-x exit' onClick={returnTo}></i>
+      <i class={ small ? 'bx bx-x small-exit' : 'bx bx-x exit' } onClick={returnTo}></i>
       <div className="contents">
 
         {
